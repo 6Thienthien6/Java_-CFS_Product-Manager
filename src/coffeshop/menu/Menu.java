@@ -102,7 +102,7 @@ public class Menu {
         }
     }
 
-    public void userOrder() {
+    public static void userOrder() {
         boolean flag = true;
         do {
             System.out.println("┌───────────────────────────────────────────────────┐");
@@ -124,7 +124,7 @@ public class Menu {
                     break;
                 case "2":
                     UserView userView = new UserView();
-                    userView.addOrder();
+                    userView.addOrderUs();
                     break;
                 case "3":
                     Menu.loginMenu();
@@ -234,7 +234,7 @@ public class Menu {
         System.out.println("☻                                                    ☻");
         System.out.println("☻                 1. Nhấn y để xác nhận xóa .        ☻");
         System.out.println("☻                 2. Nhấn c để quay lại.             ☻");
-        System.out.println("☻                                                    ☻");
+        System.out.println("☻                 3. Nhấn e để thoát.                ☻");
         System.out.println("☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻");
         System.out.printf("➨ \t");
     }

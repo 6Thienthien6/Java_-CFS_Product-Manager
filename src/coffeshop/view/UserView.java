@@ -42,8 +42,8 @@ public class UserView {
             } while (!check);
         }
     }
-    public void addOrder() {
+    public void addOrderUs() {
         OrderView orderView = new OrderView();
-        orderView.enterInfoAdd();
+        orderView.enterInfoAddUs();
     }
 }

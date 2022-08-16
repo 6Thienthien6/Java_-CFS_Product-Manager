@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class ProductView {
     private final DecimalFormat decimalFormat = new DecimalFormat("###,###,###" + " vnđ");
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static final String PATH = "data/product.csv";
+    //    private static final String PATH = "data/product.csv";
     private final ProductService productService = new ProductService();
 
     public void addProduct() {
@@ -126,21 +126,23 @@ public class ProductView {
 
     public void show(List<Product> list) {
 
-        System.out.println("/////////////////////////////////////" + " DANH SÁCH SẢN PHẨM ////////////////////////" + "////////////////////////");
+        System.out.println("╔═════════════════════════════════════════════════DANH SÁCH SẢN PHẨM ════════════════════════════════════════════════════╗");
+        System.out.println("‖                                                                                                                        ‖");
+        System.out.printf("‖ %-25s %-20s %-20s %-20s", "ID", "Tên Sản Phẩm", "Số lượng", "Giá:                                               ‖");
         System.out.println("");
-        System.out.printf("%-25s %-20s %-20s %-20s", "ID",  "Tên Sản Phẩm",  "Số lượng",  "Giá: ");
-        System.out.println(" ");
         for (Product product : list) {
-            System.out.printf("%-25d %-20s %-20d %-20s\n", product.getId(), product.getName(), product.getQuantity(), decimalFormat.format(product.getPrice()));
+            System.out.printf("‖ %-25d %-20s %-20d %-20s                               ‖\n",
+                    product.getId(), product.getName(), product.getQuantity(), decimalFormat.format(product.getPrice()));
         }
-        System.out.println("");
-        System.out.println("/////////////////////////////////////////////////////////////////////////////////////////////////\n");
+        System.out.println("‖                                                                                                                        ‖");
+        System.out.println("╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\n");
     }
+
     public void showAll() {
         List<Product> list = productService.getItem();
         System.out.println("///////////////////////////////////////" + " DANH SÁCH SẢN PHẨM ////////////////////////" + "////////////////////////");
         System.out.println("");
-        System.out.printf("%-25s %-20s %-20s %-20s", "ID",  "Tên Sản Phẩm",  "Số lượng",  "Giá: ");
+        System.out.printf("%-25s %-20s %-20s %-20s", "ID", "Tên Sản Phẩm", "Số lượng", "Giá: ");
         System.out.println(" ");
         for (Product product : list) {
             System.out.printf("%-25d %-20s %-20d %-20s\n", product.getId(), product.getName(), product.getQuantity(), decimalFormat.format(product.getPrice()));
@@ -149,11 +151,12 @@ public class ProductView {
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////////////\n");
         Menu.menuProduct();
     }
+
     public void showAllForUser() {
         List<Product> list = productService.getItem();
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DANH SÁCH SẢN PHẨM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         System.out.println("");
-        System.out.printf("%-25s %-20s %-20s %-20s", "ID",  "Tên Sản Phẩm",  "Số lượng",  "Giá: ");
+        System.out.printf("%-25s %-20s %-20s %-20s", "ID", "Tên Sản Phẩm", "Số lượng", "Giá: ");
         System.out.println(" ");
         for (Product product : list) {
             System.out.printf("%-25d %-20s %-20d %-20s\n", product.getId(), product.getName(), product.getQuantity(), decimalFormat.format(product.getPrice()));
@@ -175,17 +178,17 @@ public class ProductView {
                 price = Double.parseDouble(SCANNER.nextLine());
             }
         } while (!(price > 10000 && price < 100000));
-            product.setPrice(price);
-            productService.update(product);
+        product.setPrice(price);
+        productService.update(product);
         System.out.println("Thay đổi giá sản phẩm thành công!! ");
-            show(productService.getItem());
+        show(productService.getItem());
 
     }
 
     public void inputQuantity(long id) {
         Product product = productService.getProductByID(id);
         System.out.print("Nhập số lượng: \n➨ \t");
-        int quantity ;
+        int quantity;
         do {
             quantity = Integer.parseInt(SCANNER.nextLine());
             if (!(quantity > 0 && quantity <= 100)) {
@@ -197,7 +200,6 @@ public class ProductView {
         productService.update(product);
         System.out.println("Cập nhật thành công!");
         show(productService.getItem());
-//        System.out.println("Cập nhật thành công!");
     }
 
 
@@ -210,36 +212,39 @@ public class ProductView {
         if (product != null) {
             boolean check = true;
             Menu.removeConfirm();
-            String chon = SCANNER.nextLine();
+
             try {
-                switch (chon) {
-                    case "y":
-                        productService.remove(product.getId());
-                        System.out.println("Xóa thành công sản phẩm");
-                        show(productService.getItem());
-                        do {
+                do {
+                    String chon = SCANNER.nextLine();
+                    switch (chon) {
+                        case "y":
+                            productService.remove(product.getId());
+                            System.out.println("Xóa thành công sản phẩm");
+                            show(productService.getItem());
+
                             System.out.println("◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►");
-                            System.out.println("◄►        Nhấn '1' để quay lại      ◄►");
-                            System.out.println("◄►        Nhấn '2' để thoát         ◄►");
+                            System.out.println("◄►        Nhấn 'c' để quay lại      ◄►");
+                            System.out.println("◄►        Nhấn 'e' để thoát         ◄►");
                             System.out.println("◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►◄►");
-                            System.out.print("➨ \t");
-                            String choice = SCANNER.nextLine();
-                            switch (choice) {
-                                case "1":
-                                    Menu.menuProduct();
-                                    break;
-                                case "2":
-                                    Menu.exit();
-                                    break;
-                                default:
-                                    System.out.println("\t Nhập lại!!! ");
-                                    check = false;
-                            }
-                        } while (!check);
-                        break;
-                }
+                            System.out.println("➨ \t");
+                            chon = SCANNER.nextLine();
+
+                        case "c":
+                            Menu.menuProduct();
+                            break;
+                        case "e":
+                            Menu.exit();
+                            break;
+                        default:
+                            System.out.println("\t Nhập sai, xin mời nhập lại!!! ");
+                            check = false;
+                    }
+
+
+                } while (!check);
+
             } catch (Exception e) {
-                System.out.println("Chưa hợp lệ! Xin vui lòng nhập lại!");
+                e.printStackTrace();
             }
         }
     }

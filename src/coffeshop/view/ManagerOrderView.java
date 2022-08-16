@@ -13,25 +13,29 @@ public class ManagerOrderView {
         System.out.print("Chọn chức năng \n ➨ \t");
         try {
             boolean flag = true;
-            int choice = Integer.parseInt(scanner.nextLine());
+
             do {
+                String choice = scanner.nextLine();
                 switch (choice) {
-                    case 1 :
+                    case "1" :
                         orderView.enterInfoAdd();
                         break;
-                    case 2 :
+                    case "2" :
                         orderView.showAllOrder();
                         break;
-                    case 0 :
+                    case "0" :
                         Menu.mainMenu();
                         break;
                     default:
                         System.out.println("Không hợp lệ, vui lòng nhập lại!");
                         flag = false;
                 }
-            } while (!flag);
-        } catch (Exception e) {
-            System.out.println("Không hợp lệ, vui lòng nhập lại!");
+            }
+            while (!flag);
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

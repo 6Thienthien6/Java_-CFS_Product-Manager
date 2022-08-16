@@ -35,21 +35,21 @@ public class MenuSort {
 
     public static void option() {
         boolean flag = true;
-        int choice;
+        String choice;
         do {
             sortMenu();
-            choice = Integer.parseInt(scanner.nextLine());
+            choice = scanner.nextLine();
             switch (choice) {
-                case 1:
+                case "1":
                     showSortById();
                     break;
-                case 2:
+                case "2":
                     showSortByName();
                     break;
-                case 3:
+                case "3":
                     showSortByPrice();
                     break;
-                case 0:
+                case "0":
                     Menu.menuProduct();
                     break;
                 default:
@@ -62,7 +62,7 @@ public class MenuSort {
 
     public static void showSortByPrice() {
         boolean flag = true;
-        int choice;
+        String choice;
         do {
             System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
             System.out.println("■           SẮP XẾP THEO GIÁ SẢN PHẨM                    ■");
@@ -76,9 +76,9 @@ public class MenuSort {
             System.out.println();
             System.out.print("Chọn chức năng :");
             try {
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = scanner.nextLine();
                 switch (choice) {
-                    case 1:
+                    case "1":
                         List<Product> productList = productService.getItem();
                         System.out.println("Sắp xếp theo giá tăng dần");
                         SortByPriceASC sortByPriceASC = new SortByPriceASC();
@@ -86,7 +86,7 @@ public class MenuSort {
                         productView.show(productList);
                         option();
                         break;
-                    case 2:
+                    case "2":
                         List<Product> productsList = productService.getItem();
                         System.out.println("Sắp xếp theo giá giảm dần");
                         SortByPriceDESC sortByPriceDESC = new SortByPriceDESC();
@@ -94,7 +94,7 @@ public class MenuSort {
                         productView.show(productsList);
                         option();
                         break;
-                    case 0:
+                    case "0":
                         Menu.menuProduct();
                         break;
                     default:
@@ -109,7 +109,7 @@ public class MenuSort {
 
     public static void showSortByName() {
         boolean flag = true;
-        int choice;
+        String choice;
         do {
             System.out.println("♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠♠");
             System.out.println("♠             SẮP XẾP THEO TÊN SẢN PHẨM                 ♠");
@@ -123,9 +123,9 @@ public class MenuSort {
             System.out.println();
             System.out.print("Chọn chức năng :");
             try {
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = scanner.nextLine();
                 switch (choice) {
-                    case 1:
+                    case "1":
                         List<Product> productList = productService.getItem();
                         System.out.println("Sắp xếp theo tên tăng dần");
                         SortByNameASC sortByNameASC = new SortByNameASC();
@@ -133,7 +133,7 @@ public class MenuSort {
                         productView.show(productList);
                         option();
                         break;
-                    case 2:
+                    case "2":
                         List<Product> productsList = productService.getItem();
                         System.out.println("Sắp xếp theo tên giảm dần");
                         SortByNameDESC sortByNameDESC = new SortByNameDESC();
@@ -141,7 +141,7 @@ public class MenuSort {
                         productView.show(productsList);
                         option();
                         break;
-                    case 0:
+                    case "0":
                         Menu.menuProduct();
                         break;
                     default:
@@ -156,7 +156,7 @@ public class MenuSort {
 
     public static void showSortById() {
         boolean flag = true;
-        int choice;
+        String choice;
         do {
             System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
             System.out.println("▬              SẮP XẾP THEO ID SẢN PHẨM                  ▬");
@@ -170,9 +170,9 @@ public class MenuSort {
             System.out.println();
             System.out.print("Chọn chức năng:");
             try {
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = scanner.nextLine();
                 switch (choice) {
-                    case 1:
+                    case "1":
                         List<Product> productList = productService.getItem();
                         System.out.println("Sắp xếp theo ID tăng dần");
                         SortByIdASC sortByIDASC = new SortByIdASC();
@@ -180,7 +180,7 @@ public class MenuSort {
                         productView.show(productList);
                         option();
                         break;
-                    case 2:
+                    case "2":
                         List<Product> productsList = productService.getItem();
                         System.out.println("Sắp xếp theo ID giảm dần");
                         SortByIdDESC sortByIDDESC = new SortByIdDESC();
@@ -188,7 +188,7 @@ public class MenuSort {
                         productView.show(productsList);
                         option();
                         break;
-                    case 0:
+                    case "0":
                         Menu.menuProduct();
                         break;
                     default:
